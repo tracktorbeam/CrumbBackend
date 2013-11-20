@@ -68,5 +68,8 @@ module PlanbAdmin
     # Setting Mongoid log level
     Mongoid.logger.level = Logger::DEBUG
     Moped.logger.level = Logger::DEBUG
+
+    # Adding the 'fonts' folder to the assets path
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
   end
 end

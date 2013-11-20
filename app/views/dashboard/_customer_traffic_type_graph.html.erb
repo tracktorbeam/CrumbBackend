@@ -1,0 +1,50 @@
+<%= javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" %>
+<%= javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js" %>
+
+
+  <div class="col-lg-8">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <i class="fa fa-bar-chart-o"></i> Customer Traffic: Last 7 days 
+        </h3>
+      </div>
+      <div class="panel-body">
+        <div id="customer-traffic-type-graph"></div>
+      </div>
+    </div>
+  </div>
+
+
+<script>
+
+Morris.Area({
+  // ID of the element in which to draw the chart.
+  element: 'customer-traffic-type-graph',
+  // Chart data records -- each entry in this array corresponds to a point on
+  // the chart.
+  data: [
+  { d: '2013-11-13', ft: 78, repeat: 20 },
+  { d: '2013-11-14', ft: 70, repeat: 25 },
+  { d: '2013-11-15', ft:  90, repeat: 30 },
+  { d: '2013-11-16', ft: 130, repeat: 60 },
+  { d: '2013-11-17', ft: 170, repeat: 84 },
+  { d: '2013-11-18', ft: 50, repeat: 10 },
+  { d: '2013-11-19', ft: 59, repeat: 17 },
+  ],
+  // The name of the data record attribute that contains x-visitss.
+  xkey: 'd',
+  // A list of names of data record attributes that contain y-visitss.
+  ykeys: ['ft', 'repeat'],
+  // Labels for the ykeys -- will be displayed when you hover over the
+  // chart.
+  labels: ['First-time customer', 'Repeat customers'],
+  // Disables line smoothing
+  smooth: false,
+  xLabels: 'day',
+  resize: true,
+  lineColors: ['DarkOliveGreen', 'DarkSalmon'],
+  gridTextColor: 'black'
+});
+
+</script>

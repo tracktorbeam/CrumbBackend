@@ -1,14 +1,110 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PlanbAdmin</title>
+  <title>Plan B</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+
 </head>
 <body>
 
-<%= yield %>
+  <div id="wrapper">  
 
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#store-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Plan B</a>
+    </div>
+
+    <h4 class="navbar-text">Gymboree</h4>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="store-navbar-collapse">
+      <ul class="nav navbar-nav side-nav">
+        <
+        <li class="active"><a href="#"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-signal"></span> Beacons <span class="badge">5</span> <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Newborn</a></li>
+            <li><a href="#">Baby Girl</a></li>
+            <li><a href="#">Baby Boy</a></li>
+            <li><a href="#">Girl</a></li>
+            <li><a href="#">Boy</a></li>
+          </ul>
+        </li>
+      </ul>
+
+    
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-envelope"></span> Messages <span class="badge">7</span> <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-header">7 New Messages</li>
+            <li class="message-preview">
+              <a href="#">
+                <span class="name">Plan B:</span><br>
+                <span class="message">Important meassage regarding...</span>
+                <span class="time"><span class="glyphicon glyphicon-time"></span> 4:34 PM</span>
+              </a>
+            </li>
+            <li class="divider"></li>
+            <li class="message-preview">
+              <a href="#">
+                <span class="name">Plan B:</span><br>
+                <span class="message">Important meassage regarding...</span>
+                <span class="time"><span class="glyphicon glyphicon-time"></span> 4:34 PM</span>
+              </a>
+            </li>
+            <li class="divider"></li>
+            <li class="message-preview">
+              <a href="#">
+                <span class="name">Plan B:</span><br>
+                <span class="message">Important meassage regarding...</span>
+                <span class="time"><span class="glyphicon glyphicon-time"></span> 4:34 PM</span>
+              </a>
+            </li>
+            <li class="divider"></li>
+            <li><a href="#">View Inbox <span class="badge">7</span></a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-flag"></span> Alerts <span class="badge">3</span> <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Default <span class="label label-default">Default</span></a></li>
+            <li><a href="#">Primary <span class="label label-primary">Primary</span></a></li>
+            <li><a href="#">Success <span class="label label-success">Success</span></a></li>
+            <li><a href="#">Info <span class="label label-info">Info</span></a></li>
+            <li><a href="#">Warning <span class="label label-warning">Warning</span></a></li>
+            <li><a href="#">Danger <span class="label label-danger">Danger</span></a></li>
+            <li class="divider"></li>
+            <li><a href="#">View All</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Laurel Village <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Store Profile</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+            <li class="divider"></li>
+            <li><a href="#"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </nav>  
+  
+  <div id="page-wrapper">
+    <%= yield %>
+  </div>
+
+  </div>
 </body>
 </html>
