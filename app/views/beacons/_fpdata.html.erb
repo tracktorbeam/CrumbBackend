@@ -1,0 +1,40 @@
+<%= javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.13.3/jquery.tablesorter.min.js" %>
+
+<br/>
+<div class="col-lg-12">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title"><i class="fa fa-barcode"></i> First-Party Re-Targeting Data</h3>
+    </div>
+    <div class="panel-body">
+      <div class="table-responsive">
+        <table id="first-party-data-table" class="table table-striped table-bordered table-hover tablesorter">
+          <thead>
+            <tr class="success">
+              <th>Product UPC </th>
+          </thead>
+          <% if @beacon.first_party_data %>
+          <tbody>
+          <% @beacon.first_party_data.each do |fpd| %>
+            <tr>
+              <td><%= fpd %></td>
+            </tr>
+          <% end %>
+          </tbody>
+          <% end %>
+        </table>
+      </div>
+      <div class="text-right">
+        <b><a href="/beacons/<%= @beacon.beacon_id %>/edit">Add <i class="fa fa-plus-square"></i></a></b>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$(document).ready(function() 
+    { 
+        $("#first-party-data-table").tablesorter(); 
+    } 
+); 
+</script>

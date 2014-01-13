@@ -1,0 +1,33 @@
+<%= javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js" %>
+<%= javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.13.3/jquery.tablesorter.min.js" %>
+
+<div class="row">
+  <div class="col-lg-12">
+    <ol class="breadcrumb">
+      <li><a href="#"><span class="glyphicon glyphicon-home"></span><%= @retailer.name %></a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span><%= @store.name + ' (Store #' + @store.internal_store_id + ')' %></a></li>
+      <li class="active"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</li>
+    </ol>
+    <h2>Dashboard <small><%= @store.name + ' (Store #' + @store.internal_store_id + ')' %></small></h2>
+  </div>
+</div>
+
+<br><br>
+
+<%= render "dashboard/panels" %>
+
+<br><br>
+
+<div class="row">
+  <%= render "dashboard/customer_traffic_type_graph" %>
+  <%= render "dashboard/customer_traffic_source_graph" %>
+</div>
+
+<br><br>
+
+<div class="row">
+  <%= render "dashboard/per_zone_traffic_graph" %>
+  <%= render "dashboard/ald_performance_table" %>
+</div>
+
+

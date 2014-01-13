@@ -1,33 +1,23 @@
-<%= javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js" %>
-<%= javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.13.3/jquery.tablesorter.min.js" %>
+<h1>Listing Stores</h1>
 
-<div class="row">
-  <div class="col-lg-12">
-    <ol class="breadcrumb">
-      <li><a href="#"><span class="glyphicon glyphicon-home"></span> Gymboree</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Laurel Village (Store #12345)</a></li>
-      <li class="active"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</li>
-    </ol>
-    <h2>Dashboard <small>Laurel Village (store #12345)</small></h2>
-  </div>
-</div>
+<table>
+  <tr>
+    <th>Store</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
 
-<br><br>
+<% @stores.each do |store| %>
+  <tr>
+    <td><%= store.store_id %></td>
+    <td><%= link_to 'Show', store %></td>
+    <td><%= link_to 'Edit', edit_store_path(store) %></td>
+    <td><%= link_to 'Destroy', store, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
 
-<%= render "dashboard/panels" %>
+<br />
 
-<br><br>
-
-<div class="row">
-  <%= render "dashboard/customer_traffic_type_graph" %>
-  <%= render "dashboard/customer_traffic_source_graph" %>
-</div>
-
-<br><br>
-
-<div class="row">
-  <%= render "dashboard/per_zone_traffic_graph" %>
-  <%= render "dashboard/ald_performance_table" %>
-</div>
-
-
+<%= link_to 'New Store', new_store_path %>

@@ -1,0 +1,23 @@
+
+<h2>
+  Beacon: 
+  "<%= @beacon.name %>"
+</h2>
+
+<br/>
+
+<ul class="nav nav-tabs nav-justified">
+  <li class="active"><a href="#pane1">First-Party Data</a></li>
+  <li><a href="#pane2">Third-Party Data</a></li>
+  <li><a href="#pane3">Beacon Details</a></li>
+</ul>
+
+<div class="tab-content">
+    <div id="pane1" class="tab-pane active">
+      <%= render "fpdata" %>
+    </div>
+    <div id="pane2" class="tab-pane">
+    </div>
+    <div id="pane3" class="tab-pane">
+    </div>
+</div><!-- /.tab-content -->

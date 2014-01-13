@@ -1,6 +1,11 @@
 PlanbAdmin::Application.routes.draw do
+  resources :advertisements
+  resources :crumbs
+  resources :retailers
+  resources :beacons
   resources :stores
-
+  
+  get 'dashboard', to: 'stores#dashboard'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,0 +1,25 @@
+<br/>
+<%= form_for(@beacon) do |f| %>
+  <% if @beacon.errors.any? %>
+    <br/>
+    <div id="error_explanation" class="alert alert-danger">
+      <h4><%= pluralize(@beacon.errors.count, "error") %> prohibited this beacon from being updated:</h4>
+
+      <ul>
+      <% @beacon.errors.each do |attribute, error_msg| %>
+        <li><%= error_msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label(:first_party_data, "Enter a product UPC")%><br/>
+    <%= f.text_field :first_party_data, :value => "UPC" %>
+  </div>
+  <br/>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  <br/>
+<% end %>

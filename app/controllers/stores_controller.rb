@@ -1,14 +1,16 @@
 class StoresController < ApplicationController
-  # GET /stores
-  # GET /stores.json
-  def index
-    @stores = Store.all
+  before_filter :fetch_current_retailer, :except => [:post, :put]
+  before_filter :fetch_current_store, :except => [:post, :put]
+
+
+  # GET /dashboard
+  def dashboard
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @stores }
+      format.html # dashboard.html.erb
     end
   end
+
 
   # GET /stores/1
   # GET /stores/1.json
@@ -20,6 +22,7 @@ class StoresController < ApplicationController
       format.json { render json: @store }
     end
   end
+  
 
   # GET /stores/new
   # GET /stores/new.json
@@ -80,4 +83,16 @@ class StoresController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  
+  protected
+    def fetch_current_retailer
+      @retailer = Retailer.first
+    end
+
+    def fetch_current_store
+      @store = Retailer.first.stores.first
+    end
+
+
 end
