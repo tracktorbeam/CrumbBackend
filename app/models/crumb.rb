@@ -1,7 +1,7 @@
 class Crumb
   include Mongoid::Document
-  validates :beacon, presence: true
-  validates :consumer, presence: true
+  #validates :beacon, presence: true
+  #validates :consumer, presence: true
 
   belongs_to :beacon
   belongs_to :consumer

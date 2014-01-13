@@ -1,8 +1,8 @@
 class Store
   include Mongoid::Document
-  validates :internal_store_id, presence: true
-  validates :retailer, presence: true
-
+#  validates :internal_store_id, presence: true
+#  validates :retailer, presence: true
+#
   field :internal_store_id, type: String
   field :name, type: String
 

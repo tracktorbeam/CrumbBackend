@@ -1,6 +1,6 @@
 class Consumer
   include Mongoid::Document
-  validates :consumer_id, presence: true
+#  validates :consumer_id, presence: true
 
   field :consumer_id, type: String
   field :_id, type: String, default: ->{ consumer_id }

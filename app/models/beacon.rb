@@ -1,8 +1,8 @@
 class Beacon
   include Mongoid::Document
-  validates :beacon_id, presence: true
-  validates :store, presence: true
-  validates :first_party_data, array: { format: { with: /\d/ , message: "UPC needs to be numeric"}}
+#  validates :beacon_id, presence: true
+#  validates :store, presence: true
+#  validates :first_party_data, array: { format: { with: /\d/ , message: "UPC needs to be numeric"}}
 
   field :beacon_id, type: String
   field :_id, type: String, default: ->{ beacon_id }
