@@ -6561,6 +6561,7 @@ button.close {
   text-shadow: none;
 }
 
+
 @media screen and (min-width: 768px) {
   .carousel-control .glyphicons-chevron-left,
   .carousel-control .glyphicons-chevron-right,

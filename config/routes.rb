@@ -1,4 +1,5 @@
 PlanbAdmin::Application.routes.draw do
+
   resources :passes
   get 'passes/download/:id', to: 'passes#download'
   get 'passes/qrcode/:id', to: 'passes#qrcode'
@@ -17,6 +18,8 @@ PlanbAdmin::Application.routes.draw do
   resources :stores
 
   get 'blog', to: 'blog#index'  
+  get 'shop', to: 'shop#index'
+  get 'shop/qr/:id', to: 'shop#qr'
 
   get 'dashboard', to: 'stores#dashboard'
 
