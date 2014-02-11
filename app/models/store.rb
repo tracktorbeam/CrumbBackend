@@ -1,13 +1,12 @@
 class Store
   include Mongoid::Document
-#  validates :internal_store_id, presence: true
-#  validates :retailer, presence: true
-#
+  include Mongoid::Timestamps
+  
   field :internal_store_id, type: String
   field :name, type: String
 
   embeds_one :location
-  has_many :beacons, autosave: true, dependent: :delete
+  has_many :beacons
   belongs_to :retailer
   
 end

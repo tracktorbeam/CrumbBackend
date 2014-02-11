@@ -16,5 +16,6 @@
 
 ActiveSupport::Inflector.inflections do |inflect|
    inflect.irregular 'cookie', 'cookies'
+   inflect.irregular 'pass', 'passes'
 end
 

@@ -1,10 +1,23 @@
 PlanbAdmin::Application.routes.draw do
+  resources :passes
+  get 'passes/download/:id', to: 'passes#download'
+  get 'passes/qrcode/:id', to: 'passes#qrcode'
+  post 'passes/:version/devices/:device_library_identifier/registrations/:pass_type_identifier/:serial_number', to: 'passes#register_device_for_pass', pass_type_identifier: /.*/
+  get 'passes/:version/devices/:device_library_identifier/registrations/:pass_type_identifier', to: 'passes#fetch_pass_serial_numbers_for_device', pass_type_identifier: /.*/
+  get 'passes/:version/passes/:pass_type_identifier/:serial_number', to: 'passes#fetch_latest_pass', pass_type_identifier: /.*/
+  delete 'passes/:version/devices/:device_library_identifier/registrations/:pass_type_identifier/:serial_number', to: 'passes#unregister_device_for_pass', pass_type_identifier: /.*/
+  post 'passes/:version/log', to: 'passes#error_log'
+  post 'passes/reconcile/:consumer_id', to: 'passes#reconcile_pass_and_consumer'
+  get '/passes/account/:retailer_id/:pass_type_identifier/:serial_number/:authentication_token', to: 'passes#account', pass_type_identifier: /.*/
+
   resources :advertisements
   resources :crumbs
-  resources :retailers
+# resources :retailers
   resources :beacons
   resources :stores
-  
+
+  get 'blog', to: 'blog#index'  
+
   get 'dashboard', to: 'stores#dashboard'
 
   # The priority is based upon order of creation:
@@ -56,7 +69,7 @@ PlanbAdmin::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'stores#dashboard'
 
   # See how all your routes lay out with "rake routes"
 

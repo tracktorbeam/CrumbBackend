@@ -35,10 +35,12 @@ class StoresController < ApplicationController
     end
   end
 
+
   # GET /stores/1/edit
   def edit
     @store = Store.find(params[:id])
   end
+
 
   # POST /stores
   # POST /stores.json
@@ -56,6 +58,7 @@ class StoresController < ApplicationController
     end
   end
 
+
   # PUT /stores/1
   # PUT /stores/1.json
   def update
@@ -71,6 +74,7 @@ class StoresController < ApplicationController
       end
     end
   end
+
 
   # DELETE /stores/1
   # DELETE /stores/1.json

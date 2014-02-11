@@ -25,7 +25,6 @@ class BeaconsController < ApplicationController
     end
   end
 
-
   # GET /beacons/new
   # GET /beacons/new.json
   def new

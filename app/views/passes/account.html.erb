@@ -1,0 +1,18 @@
+<h1>My Offers</h1>
+
+<div class="col-lg-12">
+
+<table class="table table-striped">
+  <tr>
+    <th>Offer</th>
+  </tr>
+
+<% @offers.each do |generic| %>
+  <tr>
+    <td><%= generic.primaryFields.first.value %></td>
+  </tr>
+<% end %>
+</table>
+
+</div>
+

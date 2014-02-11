@@ -17,23 +17,17 @@ class AdvertisementsController < ApplicationController
   # GET /advertisements/1
   # GET /advertisements/1.json
   def show
-    advertisement = nil
-    consumer_page_view = @consumer.crumbs.map{ |crumb| crumb.beacon_id }.uniq.sample
-    if consumer_page_view
-      @sem3.products_field( "upc", Beacon.find(consumer_page_view).first_party_data.sample )
-      advertisement = @sem3.get_products
-    end
-
-    logger.debug "Advertisement : #{advertisement}"
-
-    respond_to do |format|
-      if advertisement
-        format.html # show.html.erb
-        format.json { render json: advertisement['results'].first }
+    consumer_id = params[:id]
+    consumer = Consumer.where(crumb_id: consumer_id).first
+    if (consumer)
+      advertisement = consumer.generate_advertisment
+      if (advertisement)
+        render json: advertisement
       else
-        format.html # show.html.erb
-        format.json { render json: {"status" => "error"}, status: :not_found }
+        render status: 200, nothing: true
       end
+    else
+      render status: 401, nothing: true
     end
   end
 

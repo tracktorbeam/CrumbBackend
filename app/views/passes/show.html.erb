@@ -1,0 +1,20 @@
+
+<div class="col-lg-12">
+<table class="table table-striped">
+<tr>
+<th>Discount</th>
+<th>Expiration</th>
+</tr>
+<% @passes.each do |pass| %>
+<tr>
+<td>pass.generic.primaryFields.first.value</td>
+<td>pass.generic.secondaryFields.first.value</td>
+</tr>
+<% end %>
+</table>
+</div>
+
+<!--
+<%= link_to 'Edit', edit_pass_path(@pass) %> |
+<%= link_to 'Back', passes_path %>
+-->

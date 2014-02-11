@@ -10,7 +10,7 @@
 
 <% @beacons.each do |beacon| %>
   <tr>
-    <td><%= beacon.beacon_id %></td>
+    <td><%= beacon.name %></td>
     <td><%= link_to 'Show', beacon %></td>
     <td><%= link_to 'Edit', edit_beacon_path(beacon) %></td>
     <td><%= link_to 'Destroy', beacon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -20,4 +20,6 @@
 
 <br />
 
+<!--
 <%= link_to 'New Beacon', new_beacon_path %>
+-->

@@ -7,7 +7,7 @@ class CrumbsController < ApplicationController
   def index
     @consumer_activity = {}
     Consumer.all.each do |consumer|
-      @consumer_activity[consumer.consumer_id] = consumer.activity(@store)
+      @consumer_activity[consumer.crumb_id] = consumer.activity(@store)
     end    
 
     respond_to do |format|
@@ -46,22 +46,27 @@ class CrumbsController < ApplicationController
   # POST /crumbs
   # POST /crumbs.json
   def create
-    beacon = Beacon.find(params[:uuid] + '_' + params[:major] + '_' + params[:minor])
-    consumer = Consumer.new(consumer_id: params[:consumer])
-    consumer.upsert
-
-    crumb = Crumb.new
-    crumb.beacon = beacon
-    crumb.consumer = consumer
-
-    respond_to do |format|
-      if crumb.save
-        format.html { redirect_to crumb, notice: 'Crumb was successfully created.' }
-        format.json { render json: {"status" => "success"}, status: 200 }
-      else
-        format.html { render action: "new" }
-        format.json { render json: {"status" => "error"}, status: :unprocessable_entity }
+    consumer_id = params[:consumer_id]
+    if (consumer_id)
+      consumer = Consumer.find_or_create_by(crumb_id: consumer_id)
+  
+      params[:sightings].each do |sighting|
+        if sighting[:beacon]
+          beacon = Beacon.find(sighting[:beacon][:uuid] + '|' + sighting[:beacon][:major] + '|' + sighting[:beacon][:minor])
+          if (beacon)
+            crumb = Crumb.create(observed_at: sighting[:observed_at], 
+                                accuracy: sighting[:beacon][:accuracy],
+                                rssi: sighting[:beacon][:rssi],
+                                proximity: sighting[:beacon][:proximity])
+            consumer.crumbs << crumb
+            beacon.crumbs << crumb
+          end
+        end
       end
+      consumer.push_any_eligible_offers_to_passes
+      render status:201, nothing: true
+    else
+      render status:401, nothing: true  
     end
   end
 
