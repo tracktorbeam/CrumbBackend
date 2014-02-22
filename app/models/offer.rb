@@ -1,14 +1,18 @@
 class Offer
   include Mongoid::Document
   include Mongoid::Timestamps
-  validates_presence_of :product
+  validates_uniqueness_of :product, message: "Offer exists for this beacon"
+  validates_numericality_of :discount, only_integer: true
+  validates_numericality_of :trigger, only_integer: true
 
   belongs_to :retailer
 
-  field :product, type: String
+  field :product, type: String, default: "newborn"
+  field :discount, type: Integer
+  field :trigger, type: Integer
   
   field :primary_label, type: String, default: "DISCOUNT"
-  field :primary_value, type: String, default: ->{ "50% off : " + product.titlecase }
+  field :primary_value, type: String, default: ->{ discount.to_s + "% off : " + product.titlecase }
   field :primary_change_message, type: String, default: ->{ "%@" } 
 
   field :expiration_label, type: String, default: "EXPIRES"
@@ -25,7 +29,7 @@ class Offer
     activity = consumer.activity(store)
     beacon = store.beacons.where(name: self.product).first
     if (beacon)
-      activity[beacon.id] > 600
+      activity[beacon.id] > self.trigger
     end
   end 
 

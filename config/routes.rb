@@ -1,5 +1,8 @@
 PlanbAdmin::Application.routes.draw do
 
+  resources :offers
+
+
   resources :passes
   get 'passes/download/:id', to: 'passes#download'
   get 'passes/qrcode/:id', to: 'passes#qrcode'

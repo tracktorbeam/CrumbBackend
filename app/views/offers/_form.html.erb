@@ -1,0 +1,28 @@
+<br/>
+<%= form_for(@offer) do |f| %>
+  <% if @offer.errors.any? %>
+    <br/>
+    <div id="error_explanation" class="alert alert-danger">
+      <h4><%= pluralize(@offer.errors.count, "error") %> prohibited this offer from being created</h4>
+      <ul>
+      <% @offer.errors.each do |attribute, error_msg| %>
+        <li><%= error_msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label(:product, "Select the beacon for this offer")%><br/>
+    <%= f.collection_select :product, @store.beacons, :name, :name %><br/><br/><br/>
+    <%= f.label(:discount, "Enter the discount % value")%><br/>
+    <%= f.text_field :discount, :value => "50" %><br/><br/><br/>
+    <%= f.label(:trigger, "How many seconds after the customer visit should this offer be sent to their pass?")%><br/>
+    <%= f.text_field :trigger, :value => "10" %>
+  </div>
+  <br/>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  <br/>
+<% end %>
