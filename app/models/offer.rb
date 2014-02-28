@@ -7,7 +7,7 @@ class Offer
 
   belongs_to :retailer
 
-  field :product, type: String, default: "newborn"
+  field :product, type: String, default: ""
   field :discount, type: Integer
   field :trigger, type: Integer
   

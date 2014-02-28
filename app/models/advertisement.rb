@@ -1,5 +1,3 @@
 class Advertisement
 
-  
-
 end
